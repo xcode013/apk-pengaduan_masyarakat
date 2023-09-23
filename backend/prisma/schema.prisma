@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Masyarakat {
+  nik String @db.Char(16) @id
+  name String @db.VarChar(35)
+  username String @db.VarChar(25)
+  password String @db.VarChar(255)
+  phone String @db.VarChar(13)
+  pengaduan Pengaduan[] //one to many relation between Masyrakat.id and Pengaduan[]
+
+  @@unique([username])
+}
+
+enum StatusPengaduan{
+  Dilaporkan
+  Ditolak
+  Diproses
+  Selesai
+}
+
+model Pengaduan{
+  id Int @id @default(autoincrement())
+  tgl_pengaduan DateTime @default(now())
+  masyarakat Masyarakat @relation(fields: [nik], references: [nik]) //one to many relation between Masyrakat.id and Pengaduan[]
+  nik String @db.Char(16)
+  isi_laporan String
+  foto String
+  url_foto String
+  status StatusPengaduan @default(Dilaporkan) //enum type
+  tanggapan Tanggapan? //one to one relation between Pengaduan.id with Tanggapan model
+}
+
+model Tanggapan {
+  id Int @id @default(autoincrement())
+  pengaduan Pengaduan @relation(fields: [pengaduanId], references: [id]) //one to one relation between Pengaduan.id with Tanggapan model
+  pengaduanId Int @unique //one to one relation between Pengaduan.id with Tanggapan model
+  tgl_pengaduan DateTime @default(now())
+  tanggapan String
+  petugas Petugas @relation(fields: [petugasId], references: [id])
+  petugasId String
+}
+
+enum StaffAs {
+  Admin
+  Petugas
+}
+
+model Petugas{
+  id String @id @default(uuid())
+  name String @db.VarChar(35)
+  username String @db.VarChar(25)
+  password String @db.VarChar(255)
+  phone String @db.VarChar(13)
+  level StaffAs @default(Admin)
+  menanggapi Tanggapan[]
+
+  @@unique([username])
+}
+
+model Session {
+  id String @id
+  sid String @unique
+  data String @db.MediumText
+  expiresAt DateTime
+}

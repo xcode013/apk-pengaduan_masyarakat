@@ -1,0 +1,35 @@
+# Get all data Tanggapan
+GET http://localhost:5000/tanggapan
+
+###
+
+# Get single data Tanggapan
+GET http://localhost:5000/tanggapan/1
+
+###
+
+# Add single data Tanggapan 
+POST http://localhost:5000/tanggapan
+Content-Type: application/json
+
+{
+    "pengaduanId": 37, 
+    "tanggapan": "Jadi begitu....", 
+    "petugasId": "ccb2a267-c997-4128-89fb-1764a6d37ca2"
+}
+
+
+###
+
+# Update single data Tanggapan
+PATCH http://localhost:5000/tanggapan/1
+Content-Type: application/json
+
+{
+    "tanggapan": "Kawai bener bro kalo diliat liat lagi"
+}
+
+###
+
+# Delete single data Tanggapan
+DELETE http://localhost:5000/tanggapan/

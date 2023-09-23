@@ -1,0 +1,42 @@
+# Get all data Pengaduan by status Selesai
+GET http://localhost:5000/pengaduanbystatusclear
+
+###
+
+# Get all data Pengaduan
+GET http://localhost:5000/pengaduan
+
+###
+
+# Get single data Pengaduan
+GET http://localhost:5000/pengaduan/8
+
+###
+
+# Add single data Pengaduan 
+POST http://localhost:5000/pengaduan
+Content-Type: multipart/form-data
+
+{
+    "nik": "0000000000000001", 
+    "isi_laporan": "Laporan 1",
+    "url_foto": "http://sujanah.img"
+}
+
+
+
+###
+
+# Update single data Pengaduan
+PATCH http://localhost:5000/pengaduan/
+Content-Type: application/json
+
+{
+    "name": "Mariaseks",
+    "username": "mariaseks@gmail.com"
+}
+
+###
+
+# Delete single data Pengaduan
+DELETE http://localhost:5000/pengaduan/4

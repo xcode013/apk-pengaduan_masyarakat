@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+#navigation-staf .active {
+  background-color: rgb(52 211 153);
+}
+
+@media (min-width: 1024px) {
+  #navigation-staf .active {
+    background-color: white;
+    color: black;
+  }
+}

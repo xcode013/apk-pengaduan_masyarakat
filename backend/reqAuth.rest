@@ -1,0 +1,49 @@
+# Register as Masyarakat
+POST http://localhost:5000/registerasmasyarakat
+Content-Type: application/json
+
+{
+    "nik": "0000000000000010",
+    "name": "oki",
+    "username": "oki02@gmail.com",
+    "password": "1234",
+    "confirmPass": "1234",
+    "phone": "085704303181"
+}
+
+###
+
+# Register as Petugas
+POST http://localhost:5000/registeraspetugas
+Content-Type: application/json
+
+{       
+    "name": "Admin",
+    "username": "admin@gmail.com",
+    "password": "1234",
+    "confirmPass": "1234",
+    "phone": "085704303181",
+    "level": "Admin"
+}
+
+###
+
+# Login
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "identifier": "giyu@gmail.com",
+    "password": "1234"
+}
+
+###
+
+# Me
+Get http://localhost:5000/me
+
+###
+
+# Delete
+DELETE http://localhost:5000/logout
+

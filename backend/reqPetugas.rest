@@ -1,0 +1,39 @@
+# Get all data Petugas
+GET http://localhost:5000/petugas
+
+###
+
+# Get single data Petugas
+GET http://localhost:5000/petugas/3ed30e2e-fb4b-4ecc-930b-4e357287efa1
+
+###
+
+# Add single data Petugas 
+POST http://localhost:5000/petugas
+Content-Type: application/json
+
+{       
+    "name": "Petugas 01",
+    "username": "petugas01@gmail.com",
+    "password": "1234",
+    "confirmPass": "1234",
+    "phone": "085704303181",
+    "level": "Petugas"
+}
+
+
+###
+
+# Update single data Petugas
+PATCH http://localhost:5000/petugas/3ed30e2e-fb4b-4ecc-930b-4e357287efa1
+Content-Type: application/json
+
+{
+    "name": "Mariaseks",
+    "username": "mariaseks@gmail.com"
+}
+
+###
+
+# Delete single data Petugas
+DELETE http://localhost:5000/petugas/d75040cd-9352-482e-95fe-1b851fa3c58f
